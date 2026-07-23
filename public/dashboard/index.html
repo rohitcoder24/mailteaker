@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mail Tracking Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/dashboard/css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <section id="auth-section" class="panel auth-panel">
+      <div class="brand">
+        <h1>Mail Tracker</h1>
+        <p>Send emails via Gmail and track opens in real time.</p>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="register">Register</button>
+      </div>
+      <form id="login-form" class="auth-form">
+        <label>Email<input type="email" name="email" required placeholder="you@example.com" /></label>
+        <label>Password<input type="text" name="password" required placeholder="••••••••" /></label>
+        <button type="submit">Sign In</button>
+      </form>
+      <form id="register-form" class="auth-form hidden">
+        <label>Name<input type="text" name="name" required placeholder="Jane Doe" /></label>
+        <label>Email<input type="email" name="email" required placeholder="you@example.com" /></label>
+        <label>Password<input type="password" name="password" required minlength="6" placeholder="Min 6 characters" /></label>
+        <button type="submit">Create Account</button>
+      </form>
+      <p id="auth-error" class="error hidden"></p>
+    </section>
+
+    <section id="dashboard-section" class="hidden">
+      <header class="topbar">
+        <div>
+          <h1>Mail Tracker</h1>
+          <p id="user-greeting"></p>
+        </div>
+        <div class="topbar-actions">
+          <button id="connect-gmail-btn"  class="btn secondary">Connect Gmail</button>
+          <button id="logout-btn" class="btn ghost">Logout</button>
+        </div>
+      </header>
+
+      <div class="grid">
+        <section class="panel">
+          <h2>Send Tracked Email</h2>
+          <form id="send-form">
+            <label>Recipient<input type="email" name="recipient" required placeholder="recipient@example.com" /></label>
+            <label>Subject<input type="text" name="subject" required placeholder="Meeting follow-up" /></label>
+            <label>Body (HTML)<textarea name="body" rows="6" required placeholder="<p>Hello!</p>"></textarea></label>
+            <button type="submit" class="btn primary">Send Email</button>
+          </form>
+          <p id="send-message" class="message hidden"></p>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-header">
+            <h2>Email Dashboard</h2>
+            <button id="refresh-btn" class="btn ghost">Refresh</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Recipient</th>
+                  <th>Subject</th>
+                  <th>Sent Time</th>
+                  <th>Open Status</th>
+                  <th>Open Count</th>
+                  <th>Last Open</th>
+                </tr>
+              </thead>
+              <tbody id="email-table-body">
+                <tr><td colspan="6" class="empty">No emails yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <script src="/dashboard/js/app.js"></script>
+</body>
+</html>
